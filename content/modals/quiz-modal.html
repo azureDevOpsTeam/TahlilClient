@@ -1,0 +1,32 @@
+<button id="close-btn-modal" class="close-btn">&times;</button>
+<div class="modal-content modal-content-task">
+    <!-- Textboxes in a row -->
+    <div class="input-row">
+        <input type="text" class="square-input" maxlength="1" />
+        <input type="text" class="square-input" maxlength="1" />
+        <input type="text" class="square-input" maxlength="1" />
+        <input type="text" class="square-input" maxlength="1" />
+        <input type="text" class="square-input" maxlength="1" />
+    </div>
+    <!-- Textboxes in a row -->
+    <div class="content-coin">
+        <!-- <img src="assets/images/coin/coin.png" alt="coin" class="coin" style="border-radius: 50%; object-fit: cover"> -->
+        <span id="userToDolist" class="modal-reward-number">+10,000</span>
+    </div>
+    <div class="content-text">
+        <p id="text-description">
+            You need to pay a high amount to upgrade the castle
+        </p>
+    </div>
+    <div class="run-task-buttom">
+        <input id="btn-run-task" type="button" value="Open Quiz" />
+    </div>
+    <div class="check-task-buttom mt-5">
+        <input id="btn-check-task" type="button" value="Check" disabled />
+    </div>
+</div>
+<script>
+    document.getElementById("btn-run-task").addEventListener("click", function () {
+        document.getElementById("btn-check-task").disabled = false;
+    });
+</script>
