@@ -42,10 +42,9 @@
     justify-content: space-around;
     align-items: center;
     background-color: #262e35;
-    bottom: 65px;
+    bottom: 60px;
     width: 100%;
     padding: 10px 0;
-    opacity: 0.8;
     z-index: 20;
 }
 
