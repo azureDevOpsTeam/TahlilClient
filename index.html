@@ -53,31 +53,57 @@
         <!-- Start Content -->
         <div class="content">
             <div id="home" class="section root-content">
-                <div class="box bh-m">باکس بزرگ</div>
+                <!-- <div class="box bh-full">Box Large Size</div> -->
+                <div class="box bh-m">Box Large Size</div>
                 <div class="grid">
-                    <div class="box bh-s">باکس کوچک 1</div>
-                    <div class="box bh-s">باکس کوچک 2</div>
+                    <div class="box bh-s">Box Mini</div>
+                    <div class="box bh-s">Box Mini</div>
                 </div>
-                <div class="box bh-l">باکس بزرگ</div>
             </div>
         </div>
         <!-- End Contant -->
 
         <div class="footer">
-            <span href="#earn" class="footer-item" onclick="showSection('earn')">
-                <img src="/assets/images/icons/portfolio.svg" alt="earn" class="icon"> Portfolio
+            <span id="earn" class="footer-item">
+                <img src="/assets/images/icons/portfolio.svg" alt="earn" class="icon">
             </span>
-            <span href="#mine" class="footer-item" onclick="showSection('mine')">
-                <img src="/assets/images/icons/signal.svg" alt="mine" class="icon"> Signal
+            <span id="mine" class="footer-item">
+                <img src="/assets/images/icons/signal.svg" alt="mine" class="icon">
             </span>
-            <span href="#home" class="footer-item" onclick="showSection('home')">
-                <img src="/assets/images/icons/home.svg" alt="home" class="footer-home icon"> Home
+            <span id="home" class="footer-item">
+                <img src="/assets/images/icons/home.svg" alt="home" class="icon">
             </span>
-            <span href="#friends" class="footer-item" onclick="showSection('friends')">
-                <img src="/assets/images/icons/wallet.svg" alt="friends" class="icon"> Wallet
+            <span id="friends" class="footer-item">
+                <img src="/assets/images/icons/wallet.svg" alt="friends" class="icon">
             </span>
-            <span href="#wallet" class="footer-item" onclick="showSection('wallet')">
-                <img src="/assets/images/icons/journal.svg" alt="wallet" class="icon"> Journal
+            <span id="wallet" class="footer-item">
+                <img src="/assets/images/icons/journal.svg" alt="wallet" class="icon">
+            </span>
+        </div>
+
+        <!-- Open for earn -->
+        <div id="submenu-earn" class="submenu-container">
+            <span id="earn" class="submenu-item footer-submenu sub-active">
+                Portfolio
+            </span>
+            <span id="friends" class="submenu-item footer-submenu">
+                Wallet
+            </span>
+            <span id="wallet" class="submenu-item footer-submenu">
+                Journal
+            </span>
+        </div>
+
+        <!-- Open for friends -->
+        <div id="submenu-friends" class="submenu-container">
+            <span id="earn1" class="submenu-item footer-submenu sub-active">
+                Portfolio2
+            </span>
+            <span id="friends2" class="submenu-item footer-submenu">
+                Wallet2
+            </span>
+            <span id="wallet3" class="submenu-item footer-submenu">
+                Journal2
             </span>
         </div>
 
@@ -87,6 +113,50 @@
     <script src="/assets/js/lib/axios.min.js?v=1.0.0"></script>
     <script src="/assets/js/lib/jquery.min.js?v=1.0.0"></script>
     <script src="/assets/js/lib/toastr.min.js?v=1.0.0"></script>
+
+    <script>
+        // انتخاب تمامی آیتم‌های فوتر
+        const footerItems = document.querySelectorAll('.footer-item');
+        console.log("footerItems: " + footerItems);
+        // انتخاب تمامی منوهای زیرمجموعه
+        const submenuContainers = document.querySelectorAll('.submenu-container');
+
+        // افزودن Event Listener به هر آیتم فوتر
+        footerItems.forEach(item => {
+            item.addEventListener('click', (event) => {
+                const targetId = event.currentTarget.id;  // id فوتر
+                console.log("targetId: " + targetId);
+                // پنهان کردن همه منوهای زیرمجموعه
+                submenuContainers.forEach(submenu => {
+                    submenu.classList.remove('active');
+                });
+
+                // نمایش منو مربوطه با id هماهنگ
+                const targetSubmenu = document.getElementById(`submenu-${targetId}`);
+                if (targetSubmenu) {
+                    targetSubmenu.classList.add('active'); // نمایش منو
+                }
+            });
+        });
+
+
+        // افزودن event listener به هر submenu-container
+        submenuContainers.forEach(container => {
+            const submenuItems = container.querySelectorAll('.submenu-item'); // انتخاب آیتم‌های داخل هر container
+
+            submenuItems.forEach(item => {
+                item.addEventListener('click', (event) => {
+                    // حذف کلاس 'sub-active' از تمامی آیتم‌ها در این منو
+                    submenuItems.forEach(subItem => {
+                        subItem.classList.remove('sub-active');
+                    });
+
+                    // اضافه کردن کلاس 'sub-active' به آیتم کلیک شده
+                    event.currentTarget.classList.add('sub-active');
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

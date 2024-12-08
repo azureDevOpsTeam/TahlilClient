@@ -1,62 +1,123 @@
-.root-content {
-    min-height: calc(100vh - 80px);
-    margin-top: 20px;
-    margin-right: 5px;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    /* background-color: #1e242a; */
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    overflow-y: auto; /* اسکرول عمودی فعال می‌شود */
-    overflow-x: hidden; /* جلوگیری از اسکرول افقی */
-}
-.root-content::-webkit-scrollbar {
-    width: 6px; /* عرض اسکرول‌بار */
-}
-
-.root-content::-webkit-scrollbar-thumb {
-    background-color: #888; /* رنگ اسکرول‌بار */
-    border-radius: 10px; /* گرد کردن اسکرول‌بار */
-}
-
-.root-content::-webkit-scrollbar-thumb:hover {
-    background-color: #555; /* رنگ اسکرول‌بار هنگام هاور */
-}
-/* استایل عمومی باکس‌ها */
 .box {
-    background-color: #a6bcd0;
-    /* رنگ باکس‌ها */
-    border-radius: 8px;
-    /* گرد کردن لبه‌ها */
+    background: rgb(152, 173, 191);
+    background: linear-gradient(90deg, rgba(152, 173, 191, 1) 0%, rgba(165, 187, 207, 1) 100%);
+    border-radius: 23px;
     padding: 20px;
-    text-align: center;
-    color: #333;
-    /* رنگ متن */
+    text-align: left;
+    color: #262e34;
     font-weight: bold;
-    margin: 10px 0;
-    /* فاصله بین باکس‌ها */
+    margin-bottom: 10px;
 }
 
-/* تنظیمات گرید برای دو باکس کوچک */
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* دو ستون مساوی */
     gap: 10px;
-    /* فاصله بین باکس‌ها */
 }
-
 
 .bh-s {
     height: 100px;
 }
 
 .bh-m {
-    height: 200px;
+    height: 150px;
 }
 
 .bh-l {
     height: 500px;
+}
+
+.bh-full {
+    min-height: calc(100vh - 150px);
+}
+
+.submenu-container {
+    position: fixed;
+    max-height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #262e35;
+    bottom: 65px;
+    width: 100%;
+    padding: 10px 0;
+    opacity: 0.8;
+    z-index: 20;
+}
+
+.submenu-container {
+    display: none;
+}
+
+.submenu-item.sub-active {
+    color: #fff;
+}
+
+.submenu-container.active {
+    color: #fff;
+    display: flex;
+}
+
+.footer-submenu {
+    color: #4f575d;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.sub-active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #acc3d7;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+}
+
+.submenu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(114, 114, 114);
+    text-decoration: none;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 9pt;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.submenu-item-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: antiquewhite;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 9pt;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+
+/* .submenu-item:hover {
+    color: #ffee00;
+}
+
+.submenu-item.active {
+    color: #ffee00;
+} */
+
+/* .submenu-item.active img {
+    filter: invert(87%) sepia(120%) saturate(7545%) hue-rotate(67deg) brightness(274%) contrast(105%);
+} */
+
+@media (max-width: 600px) {
+    .footer-item {
+        font-size: 8pt;
+    }
 }
