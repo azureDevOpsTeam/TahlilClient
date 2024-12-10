@@ -2,11 +2,22 @@
     background: rgb(152, 173, 191);
     background: linear-gradient(90deg, rgba(152, 173, 191, 1) 0%, rgb(165, 187, 207) 100%);
     border-radius: 23px;
-    padding: 20px;
+    padding: 10px;
     text-align: left;
     color: #262e34;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.new-box {
+    background-color: #1e242a;
+    border-radius: 23px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: 2px dashed #fff;
+    /* خط بریده با رنگ سفید */
 }
 
 .grid {
@@ -35,10 +46,42 @@
     min-height: calc(100vh - 150px);
 }
 
+.box-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.image-container {
+    margin-right: 10px;
+    text-align: center;
+}
+
+.box-image {
+    width: 265px;
+    height: auto;
+    border-radius: 17px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.box-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.box-text {
+    font-size: 14px;
+    color: #555;
+}
+
 .submenu-container {
+    display: none;
     position: fixed;
     max-height: 40px;
-    display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: #262e35;
@@ -46,10 +89,7 @@
     width: 100%;
     padding: 10px 0;
     z-index: 20;
-}
-
-.submenu-container {
-    display: none;
+    box-shadow: 0 -4px 6px rgb(0 0 0 / 30%);
 }
 
 .submenu-item.sub-active {
@@ -58,7 +98,13 @@
 
 .submenu-container.active {
     color: #fff;
+
     display: flex;
+    animation: slideUp 0.3s forwards;
+}
+
+.submenu-container.closing {
+    animation: slideDown 0.3s forwards;
 }
 
 .footer-submenu {
@@ -126,7 +172,7 @@
 }
 
 .title-box {
-    margin: 10px 20px 10px;
+    margin: 15px 20px 10px;
     color: #98adbf;
     display: flex;
     justify-content: space-between;
@@ -139,4 +185,45 @@
 
 .right {
     text-align: right;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+.box-icon {
+    width: 50px;
+    /* Adjust image size */
+    height: auto;
+}
+
+.text-container {
+    display: flex;
+    justify-content: center;
+}
+
+.box-text {
+    font-size: 14px;
+    text-align: center;
+    color: #555;
 }

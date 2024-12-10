@@ -54,10 +54,38 @@
         <div class="content">
             <div id="home" class="section root-content">
                 <!-- <div class="box bh-full">Box Large Size</div> -->
-                <div class="box bh-m">Box Large Size</div>
+                <div class="box bh-m">
+                    <div class="box-content">
+                        <div class="image-container">
+                            <img src="/assets/images/Analyze/chart.jpg" alt="image" class="box-image">
+                        </div>
+                        <div class="text-container">
+                            <h3 class="box-title">BTC Analyze</h3>
+                            <p class="box-text">This is the content that goes under the title.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="title-box">
+                    <span class="left">Your Channel</span>
+                    <span class="right">See all</span>
+                </div>
                 <div class="grid">
-                    <div class="box bh-s">Box smal</div>
-                    <div class="box bh-s">Box smal</div>
+                    <div class="box bh-s">
+                        <div class="image-container">
+                            <img src="/assets/images/Analyze/future.svg" alt="small image" class="box-icon">
+                        </div>
+                        <div class="text-container">
+                            <p class="box-text">Feutures Signal</p>
+                        </div>
+                    </div>
+                    <div class="box bh-s">
+                        <div class="image-container">
+                            <img src="/assets/images/Analyze/spot.svg" alt="small image" class="box-icon">
+                        </div>
+                        <div class="text-container">
+                            <p class="box-text">Spot Signal</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="title-box">
                     <span class="left">Chanels</span>
@@ -65,7 +93,9 @@
                 </div>
                 <div class="grid">
                     <div class="box bh-sx">Box x-smal</div>
-                    <div class="box bh-sx">Box x-smal</div>
+                    <div class="new-box bh-sx">
+                        <img src="/assets/images/Analyze/plus.svg" alt="small image" class="box-icon">
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,47 +153,42 @@
     <script src="/assets/js/lib/toastr.min.js?v=1.0.0"></script>
 
     <script>
-        // انتخاب تمامی آیتم‌های فوتر
         const footerItems = document.querySelectorAll('.footer-item');
-        console.log("footerItems: " + footerItems);
-        // انتخاب تمامی منوهای زیرمجموعه
         const submenuContainers = document.querySelectorAll('.submenu-container');
 
-        // افزودن Event Listener به هر آیتم فوتر
         footerItems.forEach(item => {
             item.addEventListener('click', (event) => {
-                const targetId = event.currentTarget.id;  // id فوتر
-                console.log("targetId: " + targetId);
-                // پنهان کردن همه منوهای زیرمجموعه
-                submenuContainers.forEach(submenu => {
-                    submenu.classList.remove('active');
-                });
-
-                // نمایش منو مربوطه با id هماهنگ
+                const targetId = event.currentTarget.id; // ID فوتر
                 const targetSubmenu = document.getElementById(`submenu-${targetId}`);
-                if (targetSubmenu) {
-                    targetSubmenu.classList.add('active'); // نمایش منو
+
+                // بررسی می‌کند که آیا submenu فعلاً فعال است یا نه
+                if (targetSubmenu && targetSubmenu.classList.contains('active')) {
+                    targetSubmenu.classList.remove('active'); // اگر فعال است، غیرفعال می‌کند
+                } else {
+                    submenuContainers.forEach(submenu => {
+                        submenu.classList.remove('active'); // همه‌ی submenuهای دیگر را غیرفعال می‌کند
+                    });
+                    if (targetSubmenu) {
+                        targetSubmenu.classList.add('active'); // اگر غیرفعال است، فعال می‌کند
+                    }
                 }
             });
         });
 
 
-        // افزودن event listener به هر submenu-container
-        submenuContainers.forEach(container => {
-            const submenuItems = container.querySelectorAll('.submenu-item'); // انتخاب آیتم‌های داخل هر container
+        // submenuContainers.forEach(container => {
+        //     const submenuItems = container.querySelectorAll('.submenu-item');
 
-            submenuItems.forEach(item => {
-                item.addEventListener('click', (event) => {
-                    // حذف کلاس 'sub-active' از تمامی آیتم‌ها در این منو
-                    submenuItems.forEach(subItem => {
-                        subItem.classList.remove('sub-active');
-                    });
+        //     submenuItems.forEach(item => {
+        //         item.addEventListener('click', (event) => {
+        //             submenuItems.forEach(subItem => {
+        //                 subItem.classList.remove('sub-active');
+        //             });
 
-                    // اضافه کردن کلاس 'sub-active' به آیتم کلیک شده
-                    event.currentTarget.classList.add('sub-active');
-                });
-            });
-        });
+        //             event.currentTarget.classList.add('sub-active');
+        //         });
+        //     });
+        // });
     </script>
 </body>
 
