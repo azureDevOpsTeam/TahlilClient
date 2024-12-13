@@ -1,0 +1,36 @@
+# Deploy Start
+name: Deploy Client App
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Copy files to the server
+      - name: Copy files via SSH
+        uses: appleboy/scp-action@v0.1.0
+        with:
+          host: 185.156.108.105
+          username: root
+          key: ${{ secrets.DEPLOY_KEY_CLIENT }}
+          source: ./
+          target: /var/www/client
+
+      # Step 3: Restart Nginx
+      - name: Restart Nginx
+        uses: appleboy/ssh-action@v0.1.0
+        with:
+          host: 185.156.108.105
+          username: root
+          key: ${{ secrets.DEPLOY_KEY_CLIENT }}
+          script: |
+            sudo systemctl reload nginx
